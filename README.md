@@ -18,17 +18,17 @@
 
 ## items テーブル
 
-| Column                    | Type       | Options          |
-| --------------------------| ---------- | ---------------- |
-| user                      | references | foreign_key:true |
-| category_id               | integer    | null: false      |
-| product_stats_id          | integer    | null: false      |
-| delivery_change_burden_id | integer    | null: false      |
-| prefecture_id             | integer    | null: false      |
-| delivery_date_id          | integer    | null: false      |
-| product_name              | string     | null: false      |
-| product_description       | text       | null: false      |
-| price                     | integer    | null: false      |
+| Column                    | Type       | Options                       |
+| --------------------------| ---------- | ----------------------------- |
+| user                      | references | null: false, foreign_key:true |
+| category_id               | integer    | null: false                   |
+| product_stats_id          | integer    | null: false                   |
+| delivery_change_burden_id | integer    | null: false                   |
+| prefecture_id             | integer    | null: false                   |
+| delivery_date_id          | integer    | null: false                   |
+| product_name              | string     | null: false                   |
+| product_description       | text       | null: false                   |
+| price                     | integer    | null: false                   |
 
 ### Association
 
@@ -37,15 +37,15 @@
 
 ##  purchasers テーブル
 
-| Column           | Type      | Options          |
-| ---------------- | --------- | ---------------- |
-| postal_code      | string    | null: false      |
-| prefecture_id    | integer   | null: false      |
-| city             | string    | null: false      |
-| block            | string    | null: false      |
-| building_name    | string    |                  |
-| phone_number     | string    | null: false      |
-| purchase_history | reference | foreign_key:true |
+| Column           | Type      | Options                       |
+| ---------------- | --------- | ----------------------------- |
+| postal_code      | string    | null: false                   |
+| prefecture_id    | integer   | null: false                   |
+| city             | string    | null: false                   |
+| block            | string    | null: false                   |
+| building_name    | string    |                               |
+| phone_number     | string    | null: false                   |
+| purchase_history | reference | null: false, foreign_key:true |
 
 ### Association
 
@@ -53,10 +53,10 @@
 
 ##  purchasers_histories テーブル
 
-| Column    | Type       | Options          |
-| --------- | ---------- | ---------------- |
-| user      | references | foreign_key:true |
-| item      | references | foreign_key:true |
+| Column    | Type       | Options                       |
+| --------- | ---------- | ----------------------------- |
+| user      | references | null: false, foreign_key:true |
+| item      | references | null: false, foreign_key:true |
 
 ### Association
 
