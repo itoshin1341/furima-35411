@@ -2,6 +2,8 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -25,13 +27,13 @@
 | prefecture_id             | integer    | null: false      |
 | delivery_date_id          | integer    | null: false      |
 | product_name              | string     | null: false      |
-| product_description       | string     | null: false      |
-| delivery_cost             | string     | null: false      |
+| product_description       | text       | null: false      |
+| delivery_cost_id          | integer    | null: false      |
 
 ### Association
 
-- belongs_to :users
-- has_one :purchaser_histories
+- belongs_to :user
+- has_one :purchaser_history
 
 ##  purchasers テーブル
 
@@ -47,17 +49,17 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :purchasers
-- belongs_to :purchasers_histories
+- belongs_to :purchasers_history
 
 ##  purchasers_histories テーブル
 
-| Column    | Type       | Options           |
-| --------- | ---------- | ----------------- |
-| user      | references |                   |
-| price     | references | foreign_key:true  |
+| Column    | Type       | Options          |
+| --------- | ---------- | ---------------- |
+| user      | references | foreign_key:true |
+| price     | references | foreign_key:true |
 
 ### Association
 
-- belongs_to :purchasers
+- belongs_to :user
+- belongs_to :item
+- belongs_to :purchaser
