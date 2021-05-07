@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
 
+  def new
+    @user = user.new
+  end
 
   private
 
