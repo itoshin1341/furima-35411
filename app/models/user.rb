@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: "Password confirmation doesn't match Password" 
+  validates_format_of :password, with: PASSWORD_REGEX, message: "パスワードは、半角英数字混合かつ6文字以上にて入力してください。" 
 
   has_many :items
   has_many :purchaser_histories
