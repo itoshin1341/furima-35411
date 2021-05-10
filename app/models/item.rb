@@ -12,4 +12,11 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_date
 
+  validates :category_id, numericality: { other_than: 1 }
+  validates :product_stats_id, numericality: { other_than: 1 }
+  validates :delivery_change_burden_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :delivery_date_id, numericality: { other_than: 1 }
+
+
 end
