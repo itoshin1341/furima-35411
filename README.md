@@ -33,7 +33,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :purchaser_history
+- has_one :purchaser_history
 
 ##  purchasers テーブル
 
