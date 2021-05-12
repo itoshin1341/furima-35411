@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
   belongs_to :user
-  belongs_to :purchaser_history
+  has_one :purchaser_history
 
   has_one_attached :image
 
@@ -12,11 +12,20 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_date
 
-  validates :category_id, numericality: { other_than: 1 }
-  validates :product_stats_id, numericality: { other_than: 1 }
-  validates :delivery_change_burden_id, numericality: { other_than: 1 }
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :delivery_date_id, numericality: { other_than: 1 }
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
+    validates :product_stats_id
+    validates :delivery_change_burden_id
+    validates :prefecture_id
+    validates :delivery_date_id
+  end
 
+  validates :price, presence: true, numericality:
+            {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
 
+  with_options presence: true do
+    validates :product_name
+    validates :product_description
+    validates :image
+  end
 end
