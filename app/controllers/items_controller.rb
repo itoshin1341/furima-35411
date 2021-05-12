@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     # 全ての商品情報を出力できるように定義
-    @items = Item.all
+    # @items = Item.all
   end
 
   def new
