@@ -8,7 +8,6 @@
     <%= form_with model: @item, local: true do |f| %>
                 <%# 上のform_withに定義されるmodelオプションはitems_pathを自動で生成するためcreateアクションを定義しないとノーメソッドエラーになる。 %>
     <%= render 'shared/error_messages', model: f.object %>
-
     <%# 出品画像 %>
     <div class="img-upload">
       <div class="weight-bold-text">
