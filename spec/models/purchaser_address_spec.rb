@@ -9,7 +9,6 @@ RSpec.describe PurchaserAddress, type: :model do
       item = FactoryBot.create(:item)
       @purchaser_address = FactoryBot.build(:purchaser_address, item_id: item.id, user_id: user.id)
       sleep(1)
-      # "記述方法はハッシュと同じ考え方。 "User.new(email: "aaa@bbb.com")item_id: ~~~, user_id: ~~~
 
     end
 

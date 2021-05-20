@@ -1,9 +1,6 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
-  # セキュリティ面を強化するためcreateアクションも適用。
-  # create、update、destroyアクションは、今回のFURIMAにおいて対応するビューファイルがなく（create.html.erbなど）、
-  # 一見不正なアクセスができないように思える処理ですが、「検証ツールを使用する」「URLの直接入力をする」といった行為で不正なアクセスができてしまうことがあるため。
 
   def index
     @purchaser = PurchaserAddress.new
