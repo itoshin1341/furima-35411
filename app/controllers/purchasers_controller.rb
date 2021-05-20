@@ -1,9 +1,11 @@
 class PurchasersController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
-  before_action :move_to_index, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+  # セキュリティ面を強化するためcreateアクションも適用。
+  # create、update、destroyアクションは、今回のFURIMAにおいて対応するビューファイルがなく（create.html.erbなど）、
+  # 一見不正なアクセスができないように思える処理ですが、「検証ツールを使用する」「URLの直接入力をする」といった行為で不正なアクセスができてしまうことがあるため。
 
   def index
-    @item = Item.find(params[:item_id])
     @purchaser = PurchaserAddress.new
   end
 
@@ -23,7 +25,7 @@ class PurchasersController < ApplicationController
 
   def purchaser_params
     params.require(:purchaser_address)
-          .permit(:postal_code, :prefecture_id, :city, :block, :building_name, :phone_number, :purchaser_history_id, :token)
+          .permit(:postal_code, :prefecture_id, :city, :block, :building_name, :phone_number, :token)
           .merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
