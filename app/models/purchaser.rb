@@ -1,3 +1,3 @@
 class Purchaser < ApplicationRecord
-  belongs_to :purchasers_history
+  belongs_to :purchaser_history
 end
